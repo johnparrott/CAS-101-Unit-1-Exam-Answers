@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CAS 101 · Unit 1 Exam Review</title>
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: #fff;
+    color: #111;
+    font-family: Arial, Helvetica, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .question-section {
+    min-height: 100vh;
+    background: #fff;
+    display: flex;
+    align-items: center;
+  }
+
+  .question-panel {
+    width: 100%;
+    background: #fff;
+    padding: clamp(84px, 10vh, 140px) clamp(34px, 8vw, 112px);
+  }
+
+  .content {
+    width: min(1200px, 100%);
+  }
+
+  .question-number {
+    margin: 0 0 20px;
+    font-size: clamp(22px, 1.8vw, 30px);
+    line-height: 1;
+    font-weight: 700;
+  }
+
+  .question {
+    margin: 0;
+    max-width: 1120px;
+    font-size: clamp(54px, 5.5vw, 94px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    font-weight: 700;
+  }
+
+  .answer {
+    color: #178A44;
+    font-weight: 700;
+    margin-top: clamp(46px, 7vh, 82px);
+    display: flex;
+    align-items: flex-start;
+    gap: 22px;
+    max-width: 980px;
+    font-size: clamp(38px, 3.1vw, 58px);
+    line-height: 1.22;
+  }
+
+  .letter {
+    width: 54px;
+    height: 54px;
+    flex: 0 0 54px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 700;
+    transform: translateY(-1px);
+  }
+
+  .answer-text {
+    padding-top: 1px;
+    font-weight: 700;
+  }
+
+  .explanation {
+    margin: clamp(42px, 6vh, 68px) 0 0;
+    padding-top: clamp(30px, 4vh, 48px);
+    border-top: 1px solid #d7d7d7;
+    max-width: 980px;
+    font-size: clamp(30px, 2.3vw, 42px);
+    line-height: 1.42;
+    letter-spacing: -0.012em;
+    font-weight: 400;
+  }
+
+  @media (max-width: 700px) {
+    .question-section { min-height: 100vh; }
+    .question-panel { padding: 64px 26px; }
+    .question { font-size: 52px; line-height: 1.08; }
+    .answer { margin-top: 40px; font-size: 34px; }
+    .explanation { margin-top: 34px; padding-top: 26px; font-size: 28px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  @media print {
+    .question-section { min-height: 100vh; page-break-after: always; }
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+</head>
+<body>
+<main id="review"></main>
+<script>
+const questions = [
+  {q:`During the same year, Maya grows taller, improves her memory, and becomes more interested in friendships. This best shows that development is:`,o:[`multidirectional`,`multidimensional`,`plastic`,`multicontextual`],a:1,t:`Principles of development`,e:`Several domains are changing at the same time: physical growth, cognitive development, and social-emotional development. That combination is what multidimensional development means.`},
+  {q:`Learning to walk allows a toddler to explore more places and interact with more people. This best illustrates that:`,o:[`development becomes less plastic with age`,`development always occurs continuously`,`context determines all development`,`change in one domain can affect other domains`],a:3,t:`Principles of development`,e:`Walking is a physical or motor change, but it also changes what the child can explore and who the child can interact with. Development in one domain can therefore cascade into other domains.`},
+  {q:`A child who struggles with a skill makes large gains after several months of practice and support. This most directly demonstrates:`,o:[`plasticity`,`multidirectionality`,`lifelong development`,`multicontextual development`],a:0,t:`Principles of development`,e:`Plasticity is the capacity for development to change in response to experience, practice, support, or other conditions. The child's improvement shows that development is not fixed.`},
+  {q:`Two children develop differently partly because they grow up in different families, schools, neighborhoods, and cultures. This best demonstrates that development is:`,o:[`multidirectional`,`discontinuous`,`multicontextual`,`plastic`],a:2,t:`Principles of development`,e:`Development unfolds within multiple contexts. Family, school, neighborhood, and culture all form parts of the environments that can shape developmental pathways.`},
+  {q:`A researcher believes children's vocabulary gradually becomes more advanced over time rather than changing in distinct stages. This reflects:`,o:[`discontinuous development`,`continuous development`,`passive development`,`multidirectional development`],a:1,t:`Developmental debates`,e:`Continuous development describes gradual, cumulative change. A stage view would instead describe development as a series of qualitatively distinct steps.`},
+  {q:`A child actively explores objects and develops new ways of understanding how they work. This supports the view that children:`,o:[`play an active role in development`,`play a passive role in development`,`develop only through stages`,`are shaped mainly by heredity`],a:0,t:`Developmental debates`,e:`The child is doing more than receiving information from the environment. By exploring, acting, and building new understanding, the child is actively participating in development.`},
+  {q:`A researcher watches children on a playground and records how often they share toys. This is:`,o:[`survey research`,`experimental research`,`a case study`,`observational research`],a:3,t:`Research methods`,e:`The researcher is systematically watching and recording behavior as it occurs. There is no manipulation of a variable, which makes this observational research.`},
+  {q:`Researchers assign children to either a new reading program or the usual program and later compare reading scores. The reading program is the:`,o:[`dependent variable`,`control group`,`independent variable`,`sample`],a:2,t:`Research methods`,e:`The independent variable is what researchers manipulate or vary. Here, the assigned reading program is the condition being changed, while later reading scores are the outcome.`},
+  {q:`Researchers test the same children at ages 5, 10, and 15. This is a:`,o:[`longitudinal study`,`cross-sectional study`,`sequential study`,`case study`],a:0,t:`Research methods`,e:`A longitudinal study follows the same participants over time and measures them repeatedly. Here, the same children are tested at three different ages.`},
+  {q:`A psychologist studies one child with an extremely rare neurological condition in great detail. A major limitation of this method is:`,o:[`participant attrition`,`limited generalizability`,`cohort effects`,`practice effects`],a:1,t:`Research methods`,e:`An intensive case study can provide rich information, especially for rare conditions, but one person's pattern may not represent other people. That limits how broadly the findings can be generalized.`},
+  {q:`A child's parents and teacher regularly communicate, and their relationship affects the child's school experience. In Bronfenbrenner's model, this is part of the:`,o:[`microsystem`,`exosystem`,`mesosystem`,`chronosystem`],a:2,t:`Ecological systems`,e:`The mesosystem is made up of connections between parts of a child's immediate environment. The relationship between home and school is a classic example.`},
+  {q:`A teacher gives students extra free time whenever they complete their work, and completed work increases. This is:`,o:[`positive punishment`,`negative reinforcement`,`classical conditioning`,`positive reinforcement`],a:3,t:`Learning`,e:`A desirable consequence is added after the behavior, and the behavior becomes more likely. Adding something pleasant to strengthen behavior is positive reinforcement.`},
+  {q:`Athletic parents give their child genes related to athletic ability while also providing sports equipment and opportunities. This is:`,o:[`active genotype–environment correlation`,`passive genotype–environment correlation`,`evocative genotype–environment correlation`,`genotype–environment interaction`],a:1,t:`Genes × environment`,e:`In a passive genotype–environment correlation, parents provide both genes and an environment that tends to fit those genes. The child did not have to select or evoke the sports environment for the correlation to occur.`},
+  {q:`A naturally outgoing child receives more conversation and attention from adults than a quieter child. This is:`,o:[`evocative genotype–environment correlation`,`passive genotype–environment correlation`,`active genotype–environment correlation`,`genotype–environment interaction`],a:0,t:`Genes × environment`,e:`The child's characteristics evoke different responses from other people. That pattern is an evocative genotype–environment correlation.`},
+  {q:`A child with a natural interest in music chooses to join band and take piano lessons. This is:`,o:[`passive genotype–environment correlation`,`genotype–environment interaction`,`evocative genotype–environment correlation`,`active genotype–environment correlation`],a:3,t:`Genes × environment`,e:`Active genotype–environment correlation occurs when people seek out environments that fit their tendencies or interests. Choosing band and piano lessons is an example of selecting that environment.`},
+  {q:`A stressful home environment has a stronger effect on children with a particular genetic susceptibility than on other children. This is:`,o:[`passive genotype–environment correlation`,`active genotype–environment correlation`,`genotype–environment interaction`,`evocative genotype–environment correlation`],a:2,t:`Genes × environment`,e:`A genotype–environment interaction means the effect of an environment differs depending on a person's genetic characteristics. Here, the same stressful context has a stronger effect for children with a particular susceptibility.`},
+  {q:`A child's environment affects whether a particular inherited tendency is expressed. This is most consistent with:`,o:[`the epigenetic framework`,`phenotype`,`active genotype–environment correlation`,`dominant inheritance`],a:0,t:`Epigenetics`,e:`The epigenetic framework focuses on how environmental conditions and experiences can influence gene activity or expression without changing the underlying DNA sequence.`},
+  {q:`A cell divides to produce reproductive cells containing half the usual number of chromosomes. The process is:`,o:[`fertilization`,`meiosis`,`mitosis`,`implantation`],a:1,t:`Cell division`,e:`Meiosis produces gametes—sperm or egg cells—with half the usual chromosome number. This allows fertilization to restore the typical chromosome count.`},
+  {q:`Cells near a small cut divide and produce genetically identical replacement cells. This occurs through:`,o:[`meiosis`,`fertilization`,`differentiation`,`mitosis`],a:3,t:`Cell division`,e:`Mitosis produces genetically identical body cells and supports growth and tissue repair. That makes it the process used to replace cells near a cut.`},
+  {q:`A child inherits many genes, but only some characteristics are visibly expressed. Those observable characteristics are the child's:`,o:[`genotype`,`alleles`,`phenotype`,`chromosomes`],a:2,t:`Genetics`,e:`A phenotype is the set of observable characteristics that result from the expression of genes in interaction with the environment. Genotype refers to the underlying genetic makeup.`},
+  {q:`A person carries one recessive allele for a disorder but does not have the disorder. This person is most likely:`,o:[`homozygous dominant`,`heterozygous`,`homozygous recessive`,`polygenic`],a:1,t:`Genetics`,e:`A heterozygous person has two different alleles for a gene. With many recessive disorders, one dominant allele can prevent the recessive condition from being expressed.`},
+  {q:`Prenatal testing shows that a fetus has an extra copy of chromosome 21. This is associated with:`,o:[`Turner syndrome`,`Klinefelter syndrome`,`Fragile X syndrome`,`Down syndrome`],a:3,t:`Chromosomal conditions`,e:`Down syndrome is associated with trisomy 21, meaning there are three copies of chromosome 21 rather than the usual two.`},
+  {q:`A fertilized egg is rapidly dividing while traveling toward the uterus but has not yet implanted. It is in the:`,o:[`germinal period`,`embryonic period`,`fetal period`,`neonatal period`],a:0,t:`Prenatal development`,e:`The germinal period begins at fertilization and includes rapid cell division, travel toward the uterus, and implantation. It occurs before the embryonic period.`},
+  {q:`A woman is six weeks pregnant, and many of the developing organism's major body structures are taking shape. This is the:`,o:[`fetal period`,`germinal period`,`embryonic period`,`period of viability`],a:2,t:`Prenatal development`,e:`Around six weeks, development is in the embryonic period, when major organs and body structures are forming. This is a particularly important period of structural development.`},
+  {q:`At about 24 weeks, survival outside the womb first becomes possible, although substantial medical support may be needed. This point is called:`,o:[`implantation`,`the age of viability`,`full-term development`,`the germinal period`],a:1,t:`Prenatal development`,e:`The age of viability refers to the point at which survival outside the uterus becomes possible with medical support. It is not the same as being full term.`},
+  {q:`Two fetuses are exposed to the same substance, but one is exposed while a particular organ is forming and experiences greater damage. The important difference is:`,o:[`amount of exposure`,`genetic susceptibility`,`number of teratogens`,`timing of exposure`],a:3,t:`Teratogens`,e:`The effects of a teratogen depend partly on when exposure occurs. An organ is especially vulnerable while it is undergoing critical periods of formation and rapid development.`},
+  {q:`A doctor needs fetal cells to investigate a possible genetic condition and removes a small amount of fluid surrounding the fetus. This procedure is:`,o:[`ultrasound`,`chorionic villus sampling`,`amniocentesis`,`maternal blood screening`],a:2,t:`Prenatal testing`,e:`Amniocentesis removes a small sample of amniotic fluid, which contains fetal cells that can be examined for certain genetic or chromosomal conditions.`},
+  {q:`During labor, contractions become stronger while the cervix gradually dilates to 10 centimeters. This occurs during:`,o:[`the first stage of labor`,`the second stage of labor`,`the third stage of labor`,`false labor`],a:0,t:`Labor`,e:`The first stage of labor lasts from the onset of true labor until the cervix is fully dilated. Contractions intensify as dilation progresses toward 10 centimeters.`},
+  {q:`The cervix is fully dilated and the baby begins moving through the birth canal. This is:`,o:[`induction`,`the first stage of labor`,`the third stage of labor`,`the second stage of labor`],a:3,t:`Labor`,e:`The second stage begins once the cervix is fully dilated and continues through the birth of the baby. Movement through the birth canal occurs during this stage.`},
+  {q:`The baby has been delivered, but contractions continue until the placenta is expelled. This is:`,o:[`the second stage of labor`,`the third stage of labor`,`the first stage of labor`,`labor induction`],a:1,t:`Labor`,e:`The third stage of labor occurs after the baby is born and ends when the placenta is delivered.`},
+  {q:`A pregnant woman's contractions become weaker when she gets up and walks around. These are most likely:`,o:[`true labor contractions`,`induced contractions`,`Braxton–Hicks contractions`,`second-stage contractions`],a:2,t:`Labor`,e:`Braxton–Hicks contractions are often irregular and may lessen with movement or a change in activity. True labor contractions generally become more regular, stronger, and closer together.`},
+  {q:`A woman's water has broken, but contractions have not started. Medication is given to begin labor. This is:`,o:[`labor induction`,`epidural anesthesia`,`Cesarean delivery`,`vacuum extraction`],a:0,t:`Childbirth`,e:`Labor induction means using medical methods, including medication, to start labor rather than waiting for contractions to begin on their own.`},
+  {q:`During delivery, a baby is positioned feet-first rather than head-down. This presentation may increase the likelihood of:`,o:[`labor induction`,`Cesarean delivery`,`epidural anesthesia`,`VBAC`],a:1,t:`Childbirth`,e:`A feet-first, or breech, presentation can make vaginal delivery more complicated. For that reason, it may increase the likelihood that a Cesarean delivery is used.`},
+  {q:`During childbirth preparation, a couple practices controlled breathing, relaxation, using a focal point, and having a support person act as a coach. They are using:`,o:[`the Bradley Method`,`Hypnobirthing`,`the Alexander Technique`,`the Lamaze Method`],a:3,t:`Childbirth preparation`,e:`Lamaze traditionally emphasizes patterned breathing, relaxation, focused attention, and support or coaching as ways to cope with labor.`},
+  {q:`One minute after birth, a clinician checks a baby's heart rate, breathing, muscle tone, reflex response, and color. This is:`,o:[`the NBAS`,`newborn blood screening`,`an Apgar assessment`,`a hearing screening`],a:2,t:`Newborn assessment`,e:`The Apgar assessment quickly evaluates Appearance, Pulse, Grimace, Activity, and Respiration. It is commonly scored at one minute and again at five minutes after birth.`},
+  {q:`A newborn receives a score at one minute and again at five minutes so clinicians can see whether the baby's immediate condition is improving. This repeated assessment is:`,o:[`the Apgar assessment`,`the NBAS`,`the heel-stick screening`,`the newborn hearing screening`],a:0,t:`Newborn assessment`,e:`Apgar scores are typically recorded at one and five minutes after birth. Repeating the assessment helps clinicians evaluate the newborn's immediate adaptation and whether additional support is needed.`},
+  {q:`After a concerning initial assessment, clinicians examine a newborn's motor behavior, muscle tone, and response to stress in greater detail. They are most likely using:`,o:[`the Apgar assessment`,`a heel-stick screening`,`a hearing screening`,`the Neonatal Behavioral Assessment Scale`],a:3,t:`Newborn assessment`,e:`The Neonatal Behavioral Assessment Scale provides a more detailed look at newborn behavior and neurological functioning than the brief Apgar assessment, including motor behavior, tone, and responses to stimulation or stress.`},
+  {q:`A baby is born at 35 weeks and has difficulty maintaining body temperature and breathing regularly. The baby is classified as:`,o:[`low birth weight`,`preterm`,`small-for-date`,`postmature`],a:1,t:`Birth outcomes`,e:`Preterm refers to birth before 37 completed weeks of gestation. At 35 weeks, the classification is therefore preterm, regardless of the baby's weight.`},
+  {q:`A newborn weighs 5 pounds 4 ounces. Based on weight alone, the baby meets the definition of:`,o:[`low birth weight`,`small-for-date`,`preterm`,`postmature`],a:0,t:`Birth outcomes`,e:`Low birth weight is defined by birth weight rather than gestational age. Five pounds four ounces is below the usual 5-pound-8-ounce (2,500 gram) cutoff.`},
+  {q:`During a difficult delivery, a newborn temporarily receives too little oxygen to the brain. This condition is:`,o:[`respiratory distress syndrome`,`small-for-date`,`anoxia`,`jaundice`],a:2,t:`Birth complications`,e:`In the terminology used for this exam, anoxia refers to a severe lack of oxygen reaching the baby's tissues or brain around birth. It can become dangerous if oxygen deprivation is prolonged.`}
+];
+
+const letters = ['A','B','C','D'];
+const review = document.getElementById('review');
+
+questions.forEach((item, i) => {
+  const section = document.createElement('section');
+  section.className = 'question-section';
+  section.innerHTML = `
+    <div class="question-panel">
+      <div class="content">
+        <div class="question-number">Question ${i + 1}</div>
+        <h2 class="question">${item.q}</h2>
+        <div class="answer">
+          <span class="letter">${letters[item.a]}</span>
+          <span class="answer-text">${item.o[item.a]}</span>
+        </div>
+        <p class="explanation">${item.e}</p>
+      </div>
+    </div>`;
+  review.appendChild(section);
+});
+
+if (window.gsap && window.ScrollTrigger && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.querySelectorAll('.question-section').forEach((section) => {
+    const number = section.querySelector('.question-number');
+    const question = section.querySelector('.question');
+    const answer = section.querySelector('.answer');
+    const explanation = section.querySelector('.explanation');
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 72%',
+        once: true
+      }
+    });
+
+    tl.from(number, {
+      autoAlpha: 0,
+      y: 18,
+      duration: 0.35,
+      ease: 'power2.out'
+    })
+    .from(question, {
+      autoAlpha: 0,
+      y: 42,
+      filter: 'blur(8px)',
+      duration: 0.75,
+      ease: 'power3.out'
+    }, '-=0.12')
+    .from(answer, {
+      autoAlpha: 0,
+      y: 30,
+      duration: 0.55,
+      ease: 'power3.out'
+    }, '-=0.32')
+    .from(explanation, {
+      autoAlpha: 0,
+      y: 24,
+      duration: 0.55,
+      ease: 'power2.out'
+    }, '-=0.24');
+  });
+}
+</script>
+</body>
+</html>
